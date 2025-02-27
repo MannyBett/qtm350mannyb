@@ -1,0 +1,79 @@
+---
+title: "Presentation"
+author: "Manny bettencourt"
+date: "2025-02-26"
+output:
+  revealjs: 
+    theme: "solarized"  
+    transition: "fade"
+---
+
+# Analysis Presentation
+
+
+---
+
+# Initial Exploring
+
+```{python,echo=FALSE}
+import matplotlib.pyplot as plt
+import pandas as pd
+
+wdi=pd.read_csv("C:/Users/manny/OneDrive/Documents/GitHub/qtm350mannyb/assignments/wdi.csv")
+
+print(wdi.describe())
+
+print(wdi.adult_literacy_rate.describe())
+print(wdi.unemployment_rate.describe())
+print(wdi.life_expectancy.describe())
+```
+
+# The mean adult literacy rate was 80.971722 and the standard deviation was 18.430839. The mean unemployment rate was 7.227344 and the standard deviation was 5.844462. The mean life expectancy was 72.416519 and the standard deviation was 7.713322.
+
+---
+
+# Figure 1
+
+```{python,echo=False,fig.cap="This histogram plot shows the distribution of life expectancy. Source: World Development Indicators (WDI)."}
+plt.hist(wdi['life_expectancy'],bins=50)
+plt.title("Life Expectancy Histogram")
+plt.xlabel("Life Expectancy")
+plt.ylabel("Count")
+```
+
+---
+
+# Figure 2
+
+```{python,echo=False,fig.cap="This scatter plot shows the relationship between Adult Literacy Rate and Unemployment Rate. Source: World Development Indicators (WDI)."}
+plt.scatter(wdi['adult_literacy_rate'], wdi['unemployment_rate'])
+plt.title("Adult Literacy Rate vs Unemployment Rate")
+plt.xlabel("Adult Literacy Rate")
+plt.ylabel("Unemployment Rate")
+```
+
+
+---
+
+# Table 1
+
+```{python}
+mean_values = wdi[['adult_literacy_rate', 'unemployment_rate', 'life_expectancy']].mean()
+std_values = wdi[['adult_literacy_rate', 'unemployment_rate', 'life_expectancy']].std()
+
+summary_table = pd.DataFrame({'Mean': mean_values, 'Standard Deviation': std_values})
+
+summary_table
+```
+
+---
+
+# Interpretation
+
+Based on what we see in [Figure 1] we see that there is a unimodal distribution of the life expectancy around the age of 75. Given the information from [Figure2] we can deduce that there is no apparent pattern in the scatter. And Finally from [Table 1] we can see that there is quite a bit standard deviation in the adult literarcy variable and the unemployment rate variable.
+
+---
+
+# Conclusion
+
+Thank you 
